@@ -1,0 +1,604 @@
+###############################################################################
+#                                                                             #
+#   Description  : FletaAgent Job Script                                      #
+#   HOSTNAME     : ibrmsv02                                                   #
+#   EXECUTE DATE : 2022-01-26 09:10:14                                        #
+#   VERSION      : 202101040000                                               #
+#                                                                             #
+###############################################################################
+
+###***date time***###
+20220126091014
+
+###***uname -a***###
+Linux ibrmsv02 4.1.12-124.16.4.el6uek.x86_64 #2 SMP Thu Jun 14 18:55:52 PDT 2018 x86_64 x86_64ibrmsv02
+
+###***host ip***###
+ibrmsv02 is 121.170.193.203
+###***Disk Flag***###
+DGC : 0
+EMC : 0
+HDS : 0
+HP : 0
+HSV : 0
+IBM : 6
+INVISTA : 0
+PAR : 0
+VOS : 0
+NETAPP : 0
+V7K : 4
+XIV : 0
+XIO : 0
+FUJITSU : 0
+PURE : 0
+
+###***iostat***###
+Attached devices:
+Host: scsi4 Channel: 02 Id: 00 Lun: 00
+  Vendor: IBM      Model: ServeRAID M1115  Rev: 2.13
+  Type:   Direct-Access                    ANSI  SCSI revision: 05
+Host: scsi5 Channel: 00 Id: 00 Lun: 00
+  Vendor: IBM SATA Model:  DEVICE 81Y3658  Rev: IB02
+  Type:   CD-ROM                           ANSI  SCSI revision: 05
+Host: scsi3 Channel: 00 Id: 00 Lun: 00
+  Vendor: IBM      Model: 2145             Rev: 0000
+  Type:   Direct-Access                    ANSI  SCSI revision: 06
+Host: scsi3 Channel: 00 Id: 00 Lun: 01
+  Vendor: IBM      Model: 2145             Rev: 0000
+  Type:   Direct-Access                    ANSI  SCSI revision: 06
+Host: scsi0 Channel: 00 Id: 00 Lun: 00
+  Vendor: IBM      Model: 2145             Rev: 0000
+  Type:   Direct-Access                    ANSI  SCSI revision: 06
+Host: scsi0 Channel: 00 Id: 00 Lun: 01
+  Vendor: IBM      Model: 2145             Rev: 0000
+  Type:   Direct-Access                    ANSI  SCSI revision: 06
+###***uname***###
+Linux ibrmsv02 4.1.12-124.16.4.el6uek.x86_64 #2 SMP Thu Jun 14 18:55:52 PDT 2018 x86_64 x86_64 x86_64 GNU/Linux
+###***datapath query essmap***###
+
+###***inq IBM***###
+
+###***inq IBM2***###
+
+###***multipath -l***###
+DATA01 (36005076802820a2c6800000000000005) dm-2 ,
+size=300G features='0' hwhandler='0' wp=rw
+|-+- policy='round-robin 0' prio=0 status=enabled
+| `- #:#:#:# -   #:#   failed undef unknown
+`-+- policy='round-robin 0' prio=0 status=enabled
+  `- #:#:#:# -   #:#   failed undef unknown
+DATA02 (36005076802820a2c6800000000000006) dm-3 ,
+size=300G features='0' hwhandler='0' wp=rw
+|-+- policy='round-robin 0' prio=0 status=enabled
+| `- #:#:#:# -   #:#   failed undef unknown
+`-+- policy='round-robin 0' prio=0 status=enabled
+  `- #:#:#:# -   #:#   failed undef unknown
+###***fdisk -l***###
+Disk /dev/ram0: 16 MB, 16777216 bytes
+255 heads, 63 sectors/track, 2 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/ram1: 16 MB, 16777216 bytes
+255 heads, 63 sectors/track, 2 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/ram2: 16 MB, 16777216 bytes
+255 heads, 63 sectors/track, 2 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/ram3: 16 MB, 16777216 bytes
+255 heads, 63 sectors/track, 2 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/ram4: 16 MB, 16777216 bytes
+255 heads, 63 sectors/track, 2 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/ram5: 16 MB, 16777216 bytes
+255 heads, 63 sectors/track, 2 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/ram6: 16 MB, 16777216 bytes
+255 heads, 63 sectors/track, 2 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/ram7: 16 MB, 16777216 bytes
+255 heads, 63 sectors/track, 2 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/ram8: 16 MB, 16777216 bytes
+255 heads, 63 sectors/track, 2 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/ram9: 16 MB, 16777216 bytes
+255 heads, 63 sectors/track, 2 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/ram10: 16 MB, 16777216 bytes
+255 heads, 63 sectors/track, 2 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/ram11: 16 MB, 16777216 bytes
+255 heads, 63 sectors/track, 2 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/ram12: 16 MB, 16777216 bytes
+255 heads, 63 sectors/track, 2 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/ram13: 16 MB, 16777216 bytes
+255 heads, 63 sectors/track, 2 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/ram14: 16 MB, 16777216 bytes
+255 heads, 63 sectors/track, 2 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/ram15: 16 MB, 16777216 bytes
+255 heads, 63 sectors/track, 2 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/sdc: 3996.0 GB, 3995997306880 bytes
+255 heads, 63 sectors/track, 485819 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sdc1               1      267350  2147483647+  ee  GPT
+Note: sector size is 2048 (not 512)
+
+Disk /dev/sr0: 4072 MB, 4072669184 bytes
+64 heads, 32 sectors/track, 971 cylinders
+Units = cylinders of 2048 * 2048 = 4194304 bytes
+Sector size (logical/physical): 2048 bytes / 2048 bytes
+I/O size (minimum/optimal): 2048 bytes / 2048 bytes
+Disk identifier: 0x2abfe5f5
+
+    Device Boot      Start         End      Blocks   Id  System
+/dev/sr0p1   *           1        3884    15908864   17  Hidden HPFS/NTFS
+Partition 1 has different physical/logical endings:
+     phys=(1023, 63, 32) logical=(3883, 63, 32)
+
+Disk /dev/mapper/vg_ibrmsv02-root: 1099.5 GB, 1099511627776 bytes
+255 heads, 63 sectors/track, 133674 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/mapper/vg_ibrmsv02-swap: 68.7 GB, 68719476736 bytes
+255 heads, 63 sectors/track, 8354 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/mapper/vg_ibrmsv02-u01: 1099.5 GB, 1099511627776 bytes
+255 heads, 63 sectors/track, 133674 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/sdf: 322.1 GB, 322122547200 bytes
+255 heads, 63 sectors/track, 39162 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 32768 bytes / 32768 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/sdg: 322.1 GB, 322122547200 bytes
+255 heads, 63 sectors/track, 39162 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 32768 bytes / 32768 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/sdh: 322.1 GB, 322122547200 bytes
+255 heads, 63 sectors/track, 39162 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 32768 bytes / 32768 bytes
+Disk identifier: 0x00000000
+
+
+Disk /dev/sdi: 322.1 GB, 322122547200 bytes
+255 heads, 63 sectors/track, 39162 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 32768 bytes / 32768 bytes
+Disk identifier: 0x00000000
+###***vgdisplay -v***###
+--- Volume group ---
+  VG Name               vg_ibrmsv02
+  System ID             
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  4
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                3
+  Open LV               3
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               3.63 TiB
+  PE Size               4.00 MiB
+  Total PE              952499
+  Alloc PE / Size       540672 / 2.06 TiB
+  Free  PE / Size       411827 / 1.57 TiB
+  VG UUID               uRydMw-SB6h-gmNo-WYnj-3xnj-Fo0i-TXigcI
+   
+  --- Logical volume ---
+  LV Path                /dev/vg_ibrmsv02/u01
+  LV Name                u01
+  VG Name                vg_ibrmsv02
+  LV UUID                PyxQJ0-Ua9c-EpC4-3VPs-6YO3-OAow-Qt7cEx
+  LV Write Access        read/write
+  LV Creation host, time ibrmsv02, 2021-02-26 15:24:49 +0900
+  LV Status              available
+  # open                 1
+  LV Size                1.00 TiB
+  Current LE             262144
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           249:4
+   
+  --- Logical volume ---
+  LV Path                /dev/vg_ibrmsv02/root
+  LV Name                root
+  VG Name                vg_ibrmsv02
+  LV UUID                3Y5x6C-1lp1-SCOd-Fodr-nvSE-t0AN-4wGMLb
+  LV Write Access        read/write
+  LV Creation host, time ibrmsv02, 2021-02-26 15:24:53 +0900
+  LV Status              available
+  # open                 1
+  LV Size                1.00 TiB
+  Current LE             262144
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           249:0
+   
+  --- Logical volume ---
+  LV Path                /dev/vg_ibrmsv02/swap
+  LV Name                swap
+  VG Name                vg_ibrmsv02
+  LV UUID                yO1avp-JQYa-Xa0l-Le27-7lv8-RIIa-1qWrAx
+  LV Write Access        read/write
+  LV Creation host, time ibrmsv02, 2021-02-26 15:24:58 +0900
+  LV Status              available
+  # open                 2
+  LV Size                64.00 GiB
+  Current LE             16384
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     256
+  Block device           249:1
+   
+  --- Physical volumes ---
+  PV Name               /dev/sdc3     
+  PV UUID               YC7y7t-3hQD-uOXP-R2lo-39Nf-xEGB-dsBNgE
+  PV Status             allocatable
+  Total PE / Free PE    952499 / 411827
+###***vxdisk -e list***###
+
+###***vxprint***###
+
+###***vxdg free***###
+
+###***df -k***###
+Filesystem            1K-blocks      Used Available Use% Mounted on
+/dev/mapper/vg_ibrmsv02-root
+                     1056763060  53519216 949540372   6% /
+tmpfs                  16376220        72  16376148   1% /dev/shm
+/dev/sdc2                194241     79086    100819  44% /boot
+/dev/sdc1                511720       280    511440   1% /boot/efi
+/dev/mapper/vg_ibrmsv02-u01
+                     1056763060 433958940 569100648  44% /u01
+ZFS_VM:/export/BAK_ORCL_01
+                       12085248   3165184   8920064  27% /ZFS/BACKUP/DATA_ORCL_01
+ZFS_VM:/export/BAK_ORCL_02
+                        7243776   2060288   5183488  29% /ZFS/BACKUP/DATA_ORCL_02
+ZFS_VM:/export/ARC_ORCL_01
+                        9625600    705536   8920064   8% /ZFS/BACKUP/ARCH_ORCL_01
+ZFS_VM:/export/ARC_ORCL_02
+                        6052864    869376   5183488  15% /ZFS/BACKUP/ARCH_ORCL_02
+###***systool***###
+Class = "fc_transport"
+
+  Class Device = "0:0"
+  Class Device path = "/sys/devices/pci0000:00/0000:00:01.0/0000:0c:00.0/host0/rport-0:0-2/target0:0:0/fc_transport/target0:0:0"
+    node_name           = "0x500507680205c082"
+    port_id             = "0xa10100"
+    port_name           = "0x500507680245c082"
+    uevent              = 
+
+    Device = "target0:0:0"
+    Device path = "/sys/devices/pci0000:00/0000:00:01.0/0000:0c:00.0/host0/rport-0:0-2/target0:0:0"
+      uevent              = "DEVTYPE=scsi_target"
+
+
+  Class Device = "0:0"
+  Class Device path = "/sys/devices/pci0000:00/0000:00:02.0/0000:11:00.1/host3/rport-3:0-2/target3:0:0/fc_transport/target3:0:0"
+    node_name           = "0x500507680205c081"
+    port_id             = "0xa10000"
+    port_name           = "0x500507680235c081"
+    uevent              = 
+
+    Device = "target3:0:0"
+    Device path = "/sys/devices/pci0000:00/0000:00:02.0/0000:11:00.1/host3/rport-3:0-2/target3:0:0"
+      uevent              = "DEVTYPE=scsi_target"
+###***systool***###
+Class = "fc_host"
+
+  Class Device = "host0"
+  Class Device path = "/sys/devices/pci0000:00/0000:00:01.0/0000:0c:00.0/host0/fc_host/host0"
+    active_fc4s         = "0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 "
+    dev_loss_tmo        = "30"
+    fabric_name         = "0x2001547fee180701"
+    issue_lip           = <store method only>
+    max_npiv_vports     = "255"
+    maxframe_size       = "2048 bytes"
+    node_name           = "0x20000090fa7168ae"
+    npiv_vports_inuse   = "0"
+    port_id             = "0xa10200"
+    port_name           = "0x10000090fa7168ae"
+    port_state          = "Online"
+    port_type           = "NPort (fabric via point-to-point)"
+    speed               = "8 Gbit"
+    supported_classes   = "Class 3"
+    supported_fc4s      = "0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 "
+    supported_speeds    = "2 Gbit, 4 Gbit, 8 Gbit"
+    symbolic_name       = "Emulex 42D0494 FV2.01A11 DV11.4.0.7 HN:ibrmsv02 OS:Linux"
+    tgtid_bind_type     = "wwpn (World Wide Port Name)"
+    uevent              = 
+    vport_create        = <store method only>
+    vport_delete        = <store method only>
+
+    Device = "host0"
+    Device path = "/sys/devices/pci0000:00/0000:00:01.0/0000:0c:00.0/host0"
+      uevent              = "DEVTYPE=scsi_host"
+
+
+  Class Device = "host1"
+  Class Device path = "/sys/devices/pci0000:00/0000:00:01.0/0000:0c:00.1/host1/fc_host/host1"
+    active_fc4s         = "0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 "
+    dev_loss_tmo        = "30"
+    fabric_name         = "0x0"
+    issue_lip           = <store method only>
+    max_npiv_vports     = "255"
+    maxframe_size       = "2048 bytes"
+    node_name           = "0x20000090fa7168af"
+    npiv_vports_inuse   = "0"
+    port_id             = "0x000000"
+    port_name           = "0x10000090fa7168af"
+    port_state          = "Linkdown"
+    port_type           = "Unknown"
+    speed               = "unknown"
+    supported_classes   = "Class 3"
+    supported_fc4s      = "0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 "
+    supported_speeds    = "2 Gbit, 4 Gbit, 8 Gbit"
+    symbolic_name       = "Emulex 42D0494 FV2.01A11 DV11.4.0.7 HN:ibrmsv02 OS:Linux"
+    tgtid_bind_type     = "wwpn (World Wide Port Name)"
+    uevent              = 
+    vport_create        = <store method only>
+    vport_delete        = <store method only>
+
+    Device = "host1"
+    Device path = "/sys/devices/pci0000:00/0000:00:01.0/0000:0c:00.1/host1"
+      uevent              = "DEVTYPE=scsi_host"
+
+
+  Class Device = "host2"
+  Class Device path = "/sys/devices/pci0000:00/0000:00:02.0/0000:11:00.0/host2/fc_host/host2"
+    active_fc4s         = "0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 "
+    dev_loss_tmo        = "30"
+    fabric_name         = "0x0"
+    issue_lip           = <store method only>
+    max_npiv_vports     = "255"
+    maxframe_size       = "2048 bytes"
+    node_name           = "0x20000000c9f57d74"
+    npiv_vports_inuse   = "0"
+    port_id             = "0x000000"
+    port_name           = "0x10000000c9f57d74"
+    port_state          = "Linkdown"
+    port_type           = "Unknown"
+    speed               = "unknown"
+    supported_classes   = "Class 3"
+    supported_fc4s      = "0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 "
+    supported_speeds    = "2 Gbit, 4 Gbit, 8 Gbit"
+    symbolic_name       = "Emulex 42D0494 FV1.11A5 DV11.4.0.7 HN:ibrmsv02 OS:Linux"
+    tgtid_bind_type     = "wwpn (World Wide Port Name)"
+    uevent              = 
+    vport_create        = <store method only>
+    vport_delete        = <store method only>
+
+    Device = "host2"
+    Device path = "/sys/devices/pci0000:00/0000:00:02.0/0000:11:00.0/host2"
+      uevent              = "DEVTYPE=scsi_host"
+
+
+  Class Device = "host3"
+  Class Device path = "/sys/devices/pci0000:00/0000:00:02.0/0000:11:00.1/host3/fc_host/host3"
+    active_fc4s         = "0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 "
+    dev_loss_tmo        = "30"
+    fabric_name         = "0x2001547fee180701"
+    issue_lip           = <store method only>
+    max_npiv_vports     = "255"
+    maxframe_size       = "2048 bytes"
+    node_name           = "0x20000000c9f57d75"
+    npiv_vports_inuse   = "0"
+    port_id             = "0xa10300"
+    port_name           = "0x10000000c9f57d75"
+    port_state          = "Online"
+    port_type           = "NPort (fabric via point-to-point)"
+    speed               = "8 Gbit"
+    supported_classes   = "Class 3"
+    supported_fc4s      = "0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 "
+    supported_speeds    = "2 Gbit, 4 Gbit, 8 Gbit"
+    symbolic_name       = "Emulex 42D0494 FV1.11A5 DV11.4.0.7 HN:ibrmsv02 OS:Linux"
+    tgtid_bind_type     = "wwpn (World Wide Port Name)"
+    uevent              = 
+    vport_create        = <store method only>
+    vport_delete        = <store method only>
+
+    Device = "host3"
+    Device path = "/sys/devices/pci0000:00/0000:00:02.0/0000:11:00.1/host3"
+      uevent              = "DEVTYPE=scsi_host"
+###***inq -hba***###
+
+###***adapter_info***###
+
+###***linux version***###
+LSB_VERSION=base-4.0-amd64:base-4.0-noarch:core-4.0-amd64:core-4.0-noarch:graphics-4.0-amd64:graphics-4.0-noarch:printing-4.0-amd64:printing-4.0-noarch
+Oracle Linux Server release 6.10
+NAME="Oracle Linux Server" 
+VERSION="6.10" 
+ID="ol" 
+VERSION_ID="6.10" 
+PRETTY_NAME="Oracle Linux Server 6.10"
+ANSI_COLOR="0;31" 
+CPE_NAME="cpe:/o:oracle:linux:6:10:server"
+HOME_URL="https://linux.oracle.com/" 
+BUG_REPORT_URL="https://bugzilla.oracle.com/" 
+
+ORACLE_BUGZILLA_PRODUCT="Oracle Linux 6" 
+ORACLE_BUGZILLA_PRODUCT_VERSION=6.10 
+ORACLE_SUPPORT_PRODUCT="Oracle Linux" 
+ORACLE_SUPPORT_PRODUCT_VERSION=6.10
+Red Hat Enterprise Linux Server release 6.10 (Santiago)
+Oracle Linux Server release 6.10
+###***hastatus -sum***###
+
+###############################################################################
+CONFIG FILE : /hsrm/AgentV8_py36/config/fleta.cfg 
+###############################################################################
+
+[ftp]
+server = 121.170.193.196
+user = fletaFTP
+timeout = 5
+pass = MfmNWa/dtZt6SN+m0rbfpg==
+port = 21
+
+[socket]
+port = 54002
+server = 121.170.193.196
+
+[systeminfo]
+set_device = FS
+diskcheck = WMI
+
+[srm]
+srm_port = 80
+srm_ip = 121.170.193.196
+
+[COMMON]
+agent_ip = 121.170.193.203
+version_check = T
+transfer = SOCKET
+home_dir = /hsrm/AgentV8_py36
+agent_port = 54001
+agent_execute = 10
+
+[save_dir]
+EMC.CLONE = /data/EMC.CLONE/
+dbinfo.MAN = /data/dbms_spool//
+dbinfo.SCH = /data/dbms_spool/
+diskinfo.MAN = /data/serverinfo/
+diskinfo.SCH = /data/serverinfo/
+
+[log]
+log_remove = 30
+logPath=/hsrm/AgentV8_py36/logs
+
+###############################################################################
+USER : root 
+###############################################################################
+
+###############################################################################
+SCHEDULE : 30:1:*:*:* 
+###############################################################################
+
+###############################################################################
+###############################################################################
+###########  END : 2022-01-26 09:10:21
+###############################################################################
+###############################################################################

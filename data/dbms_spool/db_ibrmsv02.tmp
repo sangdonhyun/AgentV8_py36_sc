@@ -1,0 +1,585 @@
+###############################################################################
+#                                                                             #
+#   Description  : FletaAgent Job Script                                      #
+#   HOSTNAME     : ibrmsv02                                                   #
+#   EXECUTE DATE : 2022-01-26 09:10:21                                        #
+#   VERSION      : 202101040000                                               #
+#                                                                             #
+###############################################################################
+
+
+###***DBMS***###
+ORACLE : 1
+DB2 : 0
+INFORMIX : 0
+ALTIBASE : 0
+TIBERO : 0
+##################################################
+#HOSTNAME : ibrmsv02                             #
+#DATABASE : ORACLE                               #
+#INSTANCE : ORCL                                 #
+#DATE     : 2022-01-26 09:10:21.590234           #
+##################################################
+
+###***Tablespace info***###
+
+Oracle,ORCL,/u01/oradata/ORCL/system01.dbf,880,874,SYSTEM,880,875
+Oracle,ORCL,/u01/oradata/ORCL/fletats01.dbf,400,313,FLETA,400,313
+Oracle,ORCL,/u01/oradata/ORCL/sysaux01.dbf,1970,1782,SYSAUX,1970,1783
+Oracle,ORCL,/u01/oradata/ORCL/users01.dbf,5,1,USERS,5,1
+Oracle,ORCL,/u01/oradata/ORCL/TEST_DATA1.dbf,300,1,TEST_DATA1,300,1
+Oracle,ORCL,/u01/oradata/ORCL/undotbs01.dbf,1010,1010,UNDOTBS1,1010,1010
+Oracle,ORCL,/u01/oradata/ORCL/TEST_DATA2.dbf,300,1,TEST_DATA2,300,1
+
+7 rows selected.
+
+
+FPARM,Oracle,ORCL,lock_name_space,,lock name space used for generating lock names for standby/clone database
+FPARM,Oracle,ORCL,processes,1920,user processes
+FPARM,Oracle,ORCL,sessions,2904,user and system sessions
+FPARM,Oracle,ORCL,timed_statistics,TRUE,maintain internal timing statistics
+FPARM,Oracle,ORCL,timed_os_statistics,0,internal os statistic gathering interval in seconds
+FPARM,Oracle,ORCL,resource_limit,TRUE,master switch for resource limit
+FPARM,Oracle,ORCL,license_max_sessions,0,maximum number of non-system user sessions allowed
+FPARM,Oracle,ORCL,license_sessions_warning,0,warning level for number of non-system user sessions
+FPARM,Oracle,ORCL,long_module_action,TRUE,Use longer module and action
+FPARM,Oracle,ORCL,standby_db_preserve_states,NONE,Preserve state cross standby role transition
+FPARM,Oracle,ORCL,instance_abort_delay_time,0,time to delay an internal initiated abort (in seconds)
+FPARM,Oracle,ORCL,cpu_count,24,number of CPUs for this instance
+FPARM,Oracle,ORCL,instance_groups,,list of instance group names
+FPARM,Oracle,ORCL,event,,debug event control - default null string
+FPARM,Oracle,ORCL,sga_max_size,10066329600,max total SGA size
+FPARM,Oracle,ORCL,use_large_pages,TRUE,Use large pages if available (TRUE/FALSE/ONLY)
+FPARM,Oracle,ORCL,pre_page_sga,TRUE,pre-page sga for process
+FPARM,Oracle,ORCL,shared_memory_address,0,SGA starting address (low order 32-bits on 64-bit platforms)
+FPARM,Oracle,ORCL,hi_shared_memory_address,0,SGA starting address (high order 32-bits on 64-bit platforms)
+FPARM,Oracle,ORCL,lock_sga,FALSE,Lock entire SGA in physical memory
+FPARM,Oracle,ORCL,processor_group_name,,Name of the processor group that this instance should run in.
+FPARM,Oracle,ORCL,allow_group_access_to_sga,FALSE,Allow read access for SGA to users of Oracle owner group
+FPARM,Oracle,ORCL,sga_min_size,0,Minimum, guaranteed size of PDB's SGA
+FPARM,Oracle,ORCL,shared_pool_size,603979776,size in bytes of shared pool
+FPARM,Oracle,ORCL,large_pool_size,0,size in bytes of large pool
+FPARM,Oracle,ORCL,java_pool_size,0,size in bytes of java pool
+FPARM,Oracle,ORCL,streams_pool_size,0,size in bytes of the streams pool
+FPARM,Oracle,ORCL,shared_pool_reserved_size,30198988,size in bytes of reserved area of shared pool
+FPARM,Oracle,ORCL,java_soft_sessionspace_limit,0,warning limit on size in bytes of a Java sessionspace
+FPARM,Oracle,ORCL,java_max_sessionspace_size,0,max allowed size in bytes of a Java sessionspace
+FPARM,Oracle,ORCL,pga_aggregate_limit,6708789248,limit of aggregate PGA memory for the instance or PDB
+FPARM,Oracle,ORCL,spfile,/u01/app/oracle/product/18c/dbs/spfileORCL.ora,server parameter file
+FPARM,Oracle,ORCL,instance_type,RDBMS,type of instance to be executed
+FPARM,Oracle,ORCL,uniform_log_timestamp_format,TRUE,use uniform timestamp formats vs pre-12.2 formats
+FPARM,Oracle,ORCL,nls_language,AMERICAN,NLS language name
+FPARM,Oracle,ORCL,nls_territory,KOREA,NLS territory name
+FPARM,Oracle,ORCL,nls_sort,BINARY,NLS linguistic definition name
+FPARM,Oracle,ORCL,nls_date_language,AMERICAN,NLS date language name
+FPARM,Oracle,ORCL,nls_date_format,RR/MM/DD,NLS Oracle date format
+FPARM,Oracle,ORCL,nls_currency,￦,NLS local currency symbol
+FPARM,Oracle,ORCL,nls_numeric_characters,.,,NLS numeric characters
+FPARM,Oracle,ORCL,nls_iso_currency,KOREA,NLS ISO currency territory name
+FPARM,Oracle,ORCL,nls_calendar,GREGORIAN,NLS calendar system name
+FPARM,Oracle,ORCL,nls_time_format,HH24:MI:SSXFF,time format
+FPARM,Oracle,ORCL,nls_timestamp_format,RR/MM/DD HH24:MI:SSXFF,time stamp format
+FPARM,Oracle,ORCL,nls_time_tz_format,HH24:MI:SSXFF TZR,time with timezone format
+FPARM,Oracle,ORCL,nls_timestamp_tz_format,RR/MM/DD HH24:MI:SSXFF TZR,timestamp with timezone format
+FPARM,Oracle,ORCL,nls_dual_currency,￦,Dual currency symbol
+FPARM,Oracle,ORCL,nls_comp,BINARY,NLS comparison
+FPARM,Oracle,ORCL,nls_length_semantics,BYTE,create columns using byte or char semantics by default
+FPARM,Oracle,ORCL,nls_nchar_conv_excp,FALSE,NLS raise an exception instead of allowing implicit conversion
+FPARM,Oracle,ORCL,disk_asynch_io,TRUE,Use asynch I/O for random access devices
+FPARM,Oracle,ORCL,tape_asynch_io,TRUE,Use asynch I/O requests for tape devices
+FPARM,Oracle,ORCL,dbwr_io_slaves,0,DBWR I/O slaves
+FPARM,Oracle,ORCL,backup_tape_io_slaves,FALSE,BACKUP Tape I/O slaves
+FPARM,Oracle,ORCL,fileio_network_adapters,,Network Adapters for File I/O
+FPARM,Oracle,ORCL,filesystemio_options,none,IO operations on filesystem files
+FPARM,Oracle,ORCL,dnfs_batch_size,4096,Max number of dNFS asynch I/O requests queued per session
+FPARM,Oracle,ORCL,clonedb,FALSE,clone database
+FPARM,Oracle,ORCL,instant_restore,FALSE,instant repopulation of datafiles
+FPARM,Oracle,ORCL,ofs_threads,4,Number of OFS threads
+FPARM,Oracle,ORCL,resource_manager_cpu_allocation,24,Resource Manager CPU allocation
+FPARM,Oracle,ORCL,resource_manager_plan,,resource mgr top plan
+FPARM,Oracle,ORCL,db_performance_profile,,Database performance category
+FPARM,Oracle,ORCL,max_iops,0,MAX IO per second
+FPARM,Oracle,ORCL,max_mbps,0,MAX MB per second
+FPARM,Oracle,ORCL,max_idle_time,0,maximum session idle time in minutes
+FPARM,Oracle,ORCL,cluster_interconnects,,interconnects for RAC use
+FPARM,Oracle,ORCL,exafusion_enabled,1,Enable Exafusion
+FPARM,Oracle,ORCL,file_mapping,FALSE,enable file mapping
+FPARM,Oracle,ORCL,max_datapump_jobs_per_pdb,100,maximum number of concurrent Data Pump Jobs per PDB
+FPARM,Oracle,ORCL,service_names,orcl,service names supported by the instance
+FPARM,Oracle,ORCL,threaded_execution,FALSE,Threaded Execution Mode
+FPARM,Oracle,ORCL,clonedb_dir,,CloneDB Directory
+FPARM,Oracle,ORCL,enable_dnfs_dispatcher,FALSE,Enable DNFS Dispatcher
+FPARM,Oracle,ORCL,gcs_server_processes,0,number of background gcs server processes to start
+FPARM,Oracle,ORCL,active_instance_count,,number of active instances in the cluster database
+FPARM,Oracle,ORCL,instance_mode,READ-WRITE,indicates whether the instance read-only or read-write or read-mostly
+FPARM,Oracle,ORCL,sga_target,10066329600,Target size of SGA
+FPARM,Oracle,ORCL,memory_target,0,Target size of Oracle SGA and PGA memory
+FPARM,Oracle,ORCL,memory_max_target,0,Max size for Memory Target
+FPARM,Oracle,ORCL,control_files,/u01/oradata/ORCL/control01.ctl, /u01/oradata/ORCL/control02.ctl,control file names list
+FPARM,Oracle,ORCL,db_file_name_convert,,datafile name convert patterns and strings for standby/clone db
+FPARM,Oracle,ORCL,log_file_name_convert,,logfile name convert patterns and strings for standby/clone db
+FPARM,Oracle,ORCL,control_file_record_keep_time,7,control file record keep time in days
+FPARM,Oracle,ORCL,db_block_buffers,0,Number of database blocks cached in memory
+FPARM,Oracle,ORCL,db_block_checksum,TYPICAL,store checksum in db blocks and check during reads
+FPARM,Oracle,ORCL,db_ultra_safe,OFF,Sets defaults for other parameters that control protection levels
+FPARM,Oracle,ORCL,db_block_size,8192,Size of database block in bytes
+FPARM,Oracle,ORCL,db_cache_size,0,Size of DEFAULT buffer pool for standard block size buffers
+FPARM,Oracle,ORCL,db_2k_cache_size,0,Size of cache for 2K buffers
+FPARM,Oracle,ORCL,db_4k_cache_size,0,Size of cache for 4K buffers
+FPARM,Oracle,ORCL,db_8k_cache_size,0,Size of cache for 8K buffers
+FPARM,Oracle,ORCL,db_16k_cache_size,0,Size of cache for 16K buffers
+FPARM,Oracle,ORCL,db_32k_cache_size,0,Size of cache for 32K buffers
+FPARM,Oracle,ORCL,db_keep_cache_size,0,Size of KEEP buffer pool for standard block size buffers
+FPARM,Oracle,ORCL,db_recycle_cache_size,0,Size of RECYCLE buffer pool for standard block size buffers
+FPARM,Oracle,ORCL,memoptimize_pool_size,0,Size of cache for imoltp buffers
+FPARM,Oracle,ORCL,db_big_table_cache_percent_target,0,Big table cache target size in percentage
+FPARM,Oracle,ORCL,encrypt_new_tablespaces,CLOUD_ONLY,whether to encrypt newly created tablespaces
+FPARM,Oracle,ORCL,db_writer_processes,3,number of background database writer  processes to start
+FPARM,Oracle,ORCL,buffer_pool_keep,,Number of database blocks/latches in keep buffer pool
+FPARM,Oracle,ORCL,buffer_pool_recycle,,Number of database blocks/latches in recycle buffer pool
+FPARM,Oracle,ORCL,db_flash_cache_file,,flash cache file for default block size
+FPARM,Oracle,ORCL,db_flash_cache_size,0,flash cache size for db_flash_cache_file
+FPARM,Oracle,ORCL,db_cache_advice,ON,Buffer cache sizing advisory
+FPARM,Oracle,ORCL,compatible,18.0.0,Database will be completely compatible with this software version
+FPARM,Oracle,ORCL,log_archive_dest_1,LOCATION=/u01/Archive/ORCL,archival destination #1 text string
+FPARM,Oracle,ORCL,log_archive_dest_2,,archival destination #2 text string
+FPARM,Oracle,ORCL,log_archive_dest_3,,archival destination #3 text string
+FPARM,Oracle,ORCL,log_archive_dest_4,,archival destination #4 text string
+FPARM,Oracle,ORCL,log_archive_dest_5,,archival destination #5 text string
+FPARM,Oracle,ORCL,log_archive_dest_6,,archival destination #6 text string
+FPARM,Oracle,ORCL,log_archive_dest_7,,archival destination #7 text string
+FPARM,Oracle,ORCL,log_archive_dest_8,,archival destination #8 text string
+FPARM,Oracle,ORCL,log_archive_dest_9,,archival destination #9 text string
+FPARM,Oracle,ORCL,log_archive_dest_10,,archival destination #10 text string
+FPARM,Oracle,ORCL,log_archive_dest_11,,archival destination #11 text string
+FPARM,Oracle,ORCL,log_archive_dest_12,,archival destination #12 text string
+FPARM,Oracle,ORCL,log_archive_dest_13,,archival destination #13 text string
+FPARM,Oracle,ORCL,log_archive_dest_14,,archival destination #14 text string
+FPARM,Oracle,ORCL,log_archive_dest_15,,archival destination #15 text string
+FPARM,Oracle,ORCL,log_archive_dest_16,,archival destination #16 text string
+FPARM,Oracle,ORCL,log_archive_dest_17,,archival destination #17 text string
+FPARM,Oracle,ORCL,log_archive_dest_18,,archival destination #18 text string
+FPARM,Oracle,ORCL,log_archive_dest_19,,archival destination #19 text string
+FPARM,Oracle,ORCL,log_archive_dest_20,,archival destination #20 text string
+FPARM,Oracle,ORCL,log_archive_dest_21,,archival destination #21 text string
+FPARM,Oracle,ORCL,log_archive_dest_22,,archival destination #22 text string
+FPARM,Oracle,ORCL,log_archive_dest_23,,archival destination #23 text string
+FPARM,Oracle,ORCL,log_archive_dest_24,,archival destination #24 text string
+FPARM,Oracle,ORCL,log_archive_dest_25,,archival destination #25 text string
+FPARM,Oracle,ORCL,log_archive_dest_26,,archival destination #26 text string
+FPARM,Oracle,ORCL,log_archive_dest_27,,archival destination #27 text string
+FPARM,Oracle,ORCL,log_archive_dest_28,,archival destination #28 text string
+FPARM,Oracle,ORCL,log_archive_dest_29,,archival destination #29 text string
+FPARM,Oracle,ORCL,log_archive_dest_30,,archival destination #30 text string
+FPARM,Oracle,ORCL,log_archive_dest_31,,archival destination #31 text string
+FPARM,Oracle,ORCL,log_archive_dest_state_1,enable,archival destination #1 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_2,enable,archival destination #2 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_3,enable,archival destination #3 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_4,enable,archival destination #4 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_5,enable,archival destination #5 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_6,enable,archival destination #6 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_7,enable,archival destination #7 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_8,enable,archival destination #8 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_9,enable,archival destination #9 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_10,enable,archival destination #10 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_11,enable,archival destination #11 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_12,enable,archival destination #12 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_13,enable,archival destination #13 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_14,enable,archival destination #14 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_15,enable,archival destination #15 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_16,enable,archival destination #16 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_17,enable,archival destination #17 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_18,enable,archival destination #18 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_19,enable,archival destination #19 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_20,enable,archival destination #20 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_21,enable,archival destination #21 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_22,enable,archival destination #22 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_23,enable,archival destination #23 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_24,enable,archival destination #24 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_25,enable,archival destination #25 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_26,enable,archival destination #26 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_27,enable,archival destination #27 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_28,enable,archival destination #28 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_29,enable,archival destination #29 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_30,enable,archival destination #30 state text string
+FPARM,Oracle,ORCL,log_archive_dest_state_31,enable,archival destination #31 state text string
+FPARM,Oracle,ORCL,log_archive_start,FALSE,start archival process on SGA initialization
+FPARM,Oracle,ORCL,log_archive_dest,,archival destination text string
+FPARM,Oracle,ORCL,log_archive_duplex_dest,,duplex archival destination text string
+FPARM,Oracle,ORCL,log_archive_min_succeed_dest,1,minimum number of archive destinations that must succeed
+FPARM,Oracle,ORCL,fal_client,,FAL client
+FPARM,Oracle,ORCL,fal_server,,FAL server list
+FPARM,Oracle,ORCL,log_archive_trace,0,Establish archive operation tracing level
+FPARM,Oracle,ORCL,data_guard_sync_latency,0,Data Guard SYNC latency
+FPARM,Oracle,ORCL,log_archive_config,,log archive config
+FPARM,Oracle,ORCL,log_archive_format,arch_%t_%s_%r.arc,archival destination format
+FPARM,Oracle,ORCL,redo_transport_user,,Data Guard transport user when using password file
+FPARM,Oracle,ORCL,log_archive_max_processes,4,maximum number of active ARCH processes
+FPARM,Oracle,ORCL,log_buffer,20594688,redo circular buffer size
+FPARM,Oracle,ORCL,log_checkpoint_interval,0,# redo blocks checkpoint threshold
+FPARM,Oracle,ORCL,log_checkpoint_timeout,1800,Maximum time interval between checkpoints in seconds
+FPARM,Oracle,ORCL,archive_lag_target,0,Maximum number of seconds of redos the standby could lose
+FPARM,Oracle,ORCL,db_files,200,max allowable # db files
+FPARM,Oracle,ORCL,db_file_multiblock_read_count,128,db block to be read each IO
+FPARM,Oracle,ORCL,read_only_open_delayed,FALSE,if TRUE delay opening of read only files until first access
+FPARM,Oracle,ORCL,cluster_database,FALSE,if TRUE startup in cluster database mode
+FPARM,Oracle,ORCL,cluster_database_instances,1,number of instances to use for sizing cluster db SGA structures
+FPARM,Oracle,ORCL,db_create_file_dest,,default database location
+FPARM,Oracle,ORCL,db_create_online_log_dest_1,,online log/controlfile destination #1
+FPARM,Oracle,ORCL,db_create_online_log_dest_2,,online log/controlfile destination #2
+FPARM,Oracle,ORCL,db_create_online_log_dest_3,,online log/controlfile destination #3
+FPARM,Oracle,ORCL,db_create_online_log_dest_4,,online log/controlfile destination #4
+FPARM,Oracle,ORCL,db_create_online_log_dest_5,,online log/controlfile  destination #5
+FPARM,Oracle,ORCL,db_recovery_file_dest,,default database recovery file location
+FPARM,Oracle,ORCL,db_recovery_file_dest_size,0,database recovery files size limit
+FPARM,Oracle,ORCL,standby_file_management,MANUAL,if auto then files are created/dropped automatically on standby
+FPARM,Oracle,ORCL,db_unrecoverable_scn_tracking,TRUE,Track nologging SCN in controlfile
+FPARM,Oracle,ORCL,thread,0,Redo thread to mount
+FPARM,Oracle,ORCL,enabled_PDBs_on_standby,*,List of Enabled PDB patterns
+FPARM,Oracle,ORCL,fast_start_io_target,0,Upper bound on recovery reads
+FPARM,Oracle,ORCL,fast_start_mttr_target,0,MTTR target in seconds
+FPARM,Oracle,ORCL,log_checkpoints_to_alert,FALSE,log checkpoint begin/end to alert file
+FPARM,Oracle,ORCL,db_lost_write_protect,NONE,enable lost write detection
+FPARM,Oracle,ORCL,recovery_parallelism,0,number of server processes to use for parallel recovery
+FPARM,Oracle,ORCL,enable_goldengate_replication,FALSE,goldengate replication enabled
+FPARM,Oracle,ORCL,inmemory_adg_enabled,TRUE,Enable IMC support on ADG
+FPARM,Oracle,ORCL,db_flashback_retention_target,1440,Maximum Flashback Database log retention time in minutes.
+FPARM,Oracle,ORCL,data_transfer_cache_size,0,Size of data transfer cache
+FPARM,Oracle,ORCL,adg_account_info_tracking,LOCAL,ADG user account info tracked in standby(LOCAL) or in Primary(GLOBAL)
+FPARM,Oracle,ORCL,dml_locks,12776,dml locks - one for each table modified in a transaction
+FPARM,Oracle,ORCL,replication_dependency_tracking,TRUE,tracking dependency for Replication parallel propagation
+FPARM,Oracle,ORCL,transactions,3194,max. number of concurrent active transactions
+FPARM,Oracle,ORCL,transactions_per_rollback_segment,5,number of active transactions per rollback segment
+FPARM,Oracle,ORCL,temp_undo_enabled,FALSE,is temporary undo enabled
+FPARM,Oracle,ORCL,rollback_segments,,undo segment list
+FPARM,Oracle,ORCL,undo_management,AUTO,instance runs in SMU mode if TRUE, else in RBU mode
+FPARM,Oracle,ORCL,undo_tablespace,UNDOTBS1,use/switch undo tablespace
+FPARM,Oracle,ORCL,undo_retention,900,undo retention in seconds
+FPARM,Oracle,ORCL,fast_start_parallel_rollback,LOW,max number of parallel recovery slaves that may be used
+FPARM,Oracle,ORCL,resumable_timeout,0,set resumable_timeout
+FPARM,Oracle,ORCL,instance_number,0,instance number
+FPARM,Oracle,ORCL,heat_map,OFF,ILM Heatmap Tracking
+FPARM,Oracle,ORCL,inmemory_size,0,size in bytes of in-memory area
+FPARM,Oracle,ORCL,inmemory_xmem_size,0,size in bytes of in-memory xmem area
+FPARM,Oracle,ORCL,inmemory_prefer_xmem_memcompress,,Prefer to store tables with given memcompress levels in xmem
+FPARM,Oracle,ORCL,inmemory_prefer_xmem_priority,,Prefer to store tables with given priority levels in xmem
+FPARM,Oracle,ORCL,db_block_checking,FALSE,header checking and data and index block checking
+FPARM,Oracle,ORCL,recyclebin,on,recyclebin processing
+FPARM,Oracle,ORCL,db_index_compression_inheritance,NONE,options for table or tablespace level compression inheritance
+FPARM,Oracle,ORCL,db_securefile,PREFERRED,permit securefile storage during lob creation
+FPARM,Oracle,ORCL,inmemory_clause_default,,Default in-memory clause for new tables
+FPARM,Oracle,ORCL,inmemory_force,DEFAULT,Force tables to be in-memory or not
+FPARM,Oracle,ORCL,inmemory_query,ENABLE,Specifies whether in-memory queries are allowed
+FPARM,Oracle,ORCL,inmemory_expressions_usage,ENABLE,Controls which In-Memory Expressions are populated in-memory
+FPARM,Oracle,ORCL,inmemory_virtual_columns,MANUAL,Controls which user-defined virtual columns are stored in-memory
+FPARM,Oracle,ORCL,inmemory_max_populate_servers,0,maximum inmemory populate servers
+FPARM,Oracle,ORCL,inmemory_trickle_repopulate_servers_percent,1,inmemory trickle repopulate servers percent
+FPARM,Oracle,ORCL,inmemory_optimized_arithmetic,DISABLE,Controls whether or not DSBs are stored in-memory
+FPARM,Oracle,ORCL,inmemory_automatic_level,OFF,Enable Automatic In-Memory management
+FPARM,Oracle,ORCL,create_stored_outlines,,create stored outlines for DML statements
+FPARM,Oracle,ORCL,serial_reuse,disable,reuse the frame segments
+FPARM,Oracle,ORCL,ldap_directory_access,NONE,RDBMS's LDAP access option
+FPARM,Oracle,ORCL,ldap_directory_sysauth,no,OID usage parameter
+FPARM,Oracle,ORCL,os_roles,FALSE,retrieve roles from the operating system
+FPARM,Oracle,ORCL,rdbms_server_dn,,RDBMS's Distinguished Name
+FPARM,Oracle,ORCL,remote_os_authent,FALSE,allow non-secure remote clients to use auto-logon accounts
+FPARM,Oracle,ORCL,remote_os_roles,FALSE,allow non-secure remote clients to use os roles
+FPARM,Oracle,ORCL,sec_case_sensitive_logon,TRUE,case sensitive password enabled for logon
+FPARM,Oracle,ORCL,O7_DICTIONARY_ACCESSIBILITY,FALSE,Version 7 Dictionary Accessibility Support
+FPARM,Oracle,ORCL,remote_login_passwordfile,EXCLUSIVE,password file usage parameter
+FPARM,Oracle,ORCL,license_max_users,0,maximum number of named users that can be created in the database
+FPARM,Oracle,ORCL,audit_sys_operations,TRUE,enable sys auditing
+FPARM,Oracle,ORCL,DBFIPS_140,FALSE,Enable use of crypographic libraries in FIPS mode, public
+FPARM,Oracle,ORCL,one_step_plugin_for_pdb_with_tde,FALSE,Facilitate one-step plugin for PDB with TDE encrypted data
+FPARM,Oracle,ORCL,external_keystore_credential_location,,external keystore credential location
+FPARM,Oracle,ORCL,unified_audit_sga_queue_size,1048576,Size of Unified audit SGA Queue
+FPARM,Oracle,ORCL,wallet_root,,wallet root instance initialization parameter
+FPARM,Oracle,ORCL,tde_configuration,,Per-PDB configuration for Transparent Data Encryption
+FPARM,Oracle,ORCL,db_domain,,directory part of global database name stored with CREATE DATABASE
+FPARM,Oracle,ORCL,global_names,FALSE,enforce that database links have same name as remote database
+FPARM,Oracle,ORCL,distributed_lock_timeout,60,number of seconds a distributed transaction waits for a lock
+FPARM,Oracle,ORCL,commit_point_strength,1,Bias this node has toward not preparing in a two-phase commit
+FPARM,Oracle,ORCL,global_txn_processes,1,number of background global transaction processes to start
+FPARM,Oracle,ORCL,instance_name,ORCL,instance name supported by the instance
+FPARM,Oracle,ORCL,dispatchers,(PROTOCOL=TCP) (SERVICE=ORCLXDB),specifications of dispatchers
+FPARM,Oracle,ORCL,shared_servers,1,number of shared servers to start up
+FPARM,Oracle,ORCL,max_shared_servers,,max number of shared servers
+FPARM,Oracle,ORCL,max_dispatchers,,max number of dispatchers
+FPARM,Oracle,ORCL,circuits,,max number of circuits
+FPARM,Oracle,ORCL,shared_server_sessions,,max number of shared server sessions
+FPARM,Oracle,ORCL,use_dedicated_broker,FALSE,Use dedicated connection broker
+FPARM,Oracle,ORCL,connection_brokers,((TYPE=DEDICATED)(BROKERS=1)), ((TYPE=EMON)(BROKERS=1)),connection brokers specification
+FPARM,Oracle,ORCL,local_listener,LISTENER_ORCL,local listener
+FPARM,Oracle,ORCL,forward_listener,,forward listener
+FPARM,Oracle,ORCL,remote_listener,,remote listener
+FPARM,Oracle,ORCL,listener_networks,,listener registration networks
+FPARM,Oracle,ORCL,cursor_space_for_time,FALSE,use more memory in order to get faster execution
+FPARM,Oracle,ORCL,session_cached_cursors,50,Number of cursors to cache in a session.
+FPARM,Oracle,ORCL,remote_dependencies_mode,TIMESTAMP,remote-procedure-call dependencies mode parameter
+FPARM,Oracle,ORCL,smtp_out_server,,utl_smtp server and port configuration parameter
+FPARM,Oracle,ORCL,plsql_v2_compatibility,FALSE,PL/SQL version 2.x compatibility flag
+FPARM,Oracle,ORCL,plsql_warnings,DISABLE:ALL,PL/SQL compiler warnings settings
+FPARM,Oracle,ORCL,plsql_code_type,INTERPRETED,PL/SQL code-type
+FPARM,Oracle,ORCL,plsql_debug,FALSE,PL/SQL debug
+FPARM,Oracle,ORCL,plsql_optimize_level,2,PL/SQL optimize level
+FPARM,Oracle,ORCL,plsql_ccflags,,PL/SQL ccflags
+FPARM,Oracle,ORCL,plscope_settings,IDENTIFIERS:NONE,plscope_settings controls the compile time collection, cross reference, and storage of PL/SQL source code identifier and SQL statement data
+FPARM,Oracle,ORCL,permit_92_wrap_format,TRUE,allow 9.2 or older wrap format in PL/SQL
+FPARM,Oracle,ORCL,java_jit_enabled,TRUE,Java VM JIT enabled
+FPARM,Oracle,ORCL,java_restrict,none,Restrict Java VM Access
+FPARM,Oracle,ORCL,job_queue_processes,4000,maximum number of job queue slave processes
+FPARM,Oracle,ORCL,parallel_min_percent,0,minimum percent of threads required for parallel query
+FPARM,Oracle,ORCL,create_bitmap_area_size,8388608,size of create bitmap buffer for bitmap index
+FPARM,Oracle,ORCL,bitmap_merge_area_size,1048576,maximum memory allow for BITMAP MERGE
+FPARM,Oracle,ORCL,cursor_sharing,EXACT,cursor sharing mode
+FPARM,Oracle,ORCL,result_cache_mode,MANUAL,result cache operator usage mode
+FPARM,Oracle,ORCL,parallel_min_servers,48,minimum parallel query servers per instance
+FPARM,Oracle,ORCL,parallel_max_servers,480,maximum parallel query servers per instance
+FPARM,Oracle,ORCL,parallel_instance_group,,instance group to use for all parallel operations
+FPARM,Oracle,ORCL,parallel_execution_message_size,16384,message buffer size for parallel execution
+FPARM,Oracle,ORCL,hash_area_size,131072,size of in-memory hash work area
+FPARM,Oracle,ORCL,private_temp_table_prefix,ORA$PTT_,Private temporary table prefix
+FPARM,Oracle,ORCL,result_cache_max_size,6062080,maximum amount of memory to be used by the cache
+FPARM,Oracle,ORCL,result_cache_max_result,5,maximum result size as percent of cache size
+FPARM,Oracle,ORCL,result_cache_remote_expiration,0,maximum life time (min) for any result using a remote object
+FPARM,Oracle,ORCL,shadow_core_dump,partial,Core Size for Shadow Processes
+FPARM,Oracle,ORCL,background_core_dump,partial,Core Size for Background Processes
+FPARM,Oracle,ORCL,background_dump_dest,/u01/app/oracle/product/18c/rdbms/log,Detached process dump directory
+FPARM,Oracle,ORCL,user_dump_dest,/u01/app/oracle/product/18c/rdbms/log,User process dump directory
+FPARM,Oracle,ORCL,core_dump_dest,/u01/app/oracle/diag/rdbms/orcl/ORCL/cdump,Core dump directory
+FPARM,Oracle,ORCL,audit_file_dest,/u01/app/oracle/admin/orcl/adump,Directory in which auditing files are to reside
+FPARM,Oracle,ORCL,audit_syslog_level,,Syslog facility and level
+FPARM,Oracle,ORCL,unified_audit_systemlog,,Syslog facility and level for Unified Audit
+FPARM,Oracle,ORCL,resource_manage_goldengate,FALSE,goldengate resource manager enabled
+FPARM,Oracle,ORCL,object_cache_optimal_size,10240000,optimal size of the user session's object cache in bytes
+FPARM,Oracle,ORCL,object_cache_max_size_percent,10,percentage of maximum size over optimal of the user session's object cache
+FPARM,Oracle,ORCL,session_max_open_files,10,maximum number of open files allowed per session
+FPARM,Oracle,ORCL,open_links,4,max # open links per session
+FPARM,Oracle,ORCL,open_links_per_instance,4,max # open links per instance
+FPARM,Oracle,ORCL,commit_write,,transaction commit log write behaviour
+FPARM,Oracle,ORCL,commit_wait,,transaction commit log wait behaviour
+FPARM,Oracle,ORCL,commit_logging,,transaction commit log write behaviour
+FPARM,Oracle,ORCL,optimizer_features_enable,18.1.0,optimizer plan compatibility parameter
+FPARM,Oracle,ORCL,fixed_date,,fixed SYSDATE value
+FPARM,Oracle,ORCL,audit_trail,DB,enable system auditing
+FPARM,Oracle,ORCL,sort_area_size,65536,size of in-memory sort work area
+FPARM,Oracle,ORCL,sort_area_retained_size,0,size of in-memory sort work area retained between fetch calls
+FPARM,Oracle,ORCL,cell_offload_processing,TRUE,enable SQL processing offload to cells
+FPARM,Oracle,ORCL,cell_offload_decryption,TRUE,enable SQL processing offload of encrypted data to cells
+FPARM,Oracle,ORCL,cell_offload_parameters,,Additional cell offload parameters
+FPARM,Oracle,ORCL,cell_offload_compaction,ADAPTIVE,Cell packet compaction strategy
+FPARM,Oracle,ORCL,cell_offload_plan_display,AUTO,Cell offload explain plan display
+FPARM,Oracle,ORCL,db_name,orcl,database name specified in CREATE DATABASE
+FPARM,Oracle,ORCL,db_unique_name,orcl,Database Unique Name
+FPARM,Oracle,ORCL,open_cursors,300,max # cursors per session
+FPARM,Oracle,ORCL,ifile,,include file in init.ora
+FPARM,Oracle,ORCL,sql_trace,FALSE,enable SQL trace
+FPARM,Oracle,ORCL,os_authent_prefix,ops$,prefix for auto-logon accounts
+FPARM,Oracle,ORCL,optimizer_mode,ALL_ROWS,optimizer mode
+FPARM,Oracle,ORCL,sql92_security,TRUE,require select privilege for searched update/delete
+FPARM,Oracle,ORCL,blank_trimming,FALSE,blank trimming semantics parameter
+FPARM,Oracle,ORCL,star_transformation_enabled,FALSE,enable the use of star transformation
+FPARM,Oracle,ORCL,parallel_degree_policy,MANUAL,policy used to compute the degree of parallelism (MANUAL/LIMITED/AUTO/ADAPTIVE)
+FPARM,Oracle,ORCL,parallel_adaptive_multi_user,FALSE,enable adaptive setting of degree for multiple user streams
+FPARM,Oracle,ORCL,parallel_threads_per_cpu,1,number of parallel execution threads per CPU
+FPARM,Oracle,ORCL,optimizer_index_cost_adj,100,optimizer index cost adjustment
+FPARM,Oracle,ORCL,optimizer_index_caching,0,optimizer percent index caching
+FPARM,Oracle,ORCL,query_rewrite_enabled,TRUE,allow rewrite of queries using materialized views if enabled
+FPARM,Oracle,ORCL,query_rewrite_integrity,enforced,perform rewrite using materialized views with desired integrity
+FPARM,Oracle,ORCL,pga_aggregate_target,3354394624,Target size for the aggregate PGA memory consumed by the instance
+FPARM,Oracle,ORCL,workarea_size_policy,AUTO,policy used to size SQL working areas (MANUAL/AUTO)
+FPARM,Oracle,ORCL,optimizer_dynamic_sampling,2,optimizer dynamic sampling
+FPARM,Oracle,ORCL,statistics_level,TYPICAL,statistics level
+FPARM,Oracle,ORCL,cursor_bind_capture_destination,memory+disk,Allowed destination for captured bind variables
+FPARM,Oracle,ORCL,skip_unusable_indexes,TRUE,skip unusable indexes if set to TRUE
+FPARM,Oracle,ORCL,optimizer_ignore_hints,FALSE,enables the embedded hints to be ignored
+FPARM,Oracle,ORCL,optimizer_secure_view_merging,TRUE,optimizer secure view merging and predicate pushdown/movearound
+FPARM,Oracle,ORCL,ddl_lock_timeout,0,timeout to restrict the time that ddls wait for dml lock
+FPARM,Oracle,ORCL,deferred_segment_creation,TRUE,defer segment creation to first insert
+FPARM,Oracle,ORCL,optimizer_use_pending_statistics,FALSE,Control whether to use optimizer pending statistics
+FPARM,Oracle,ORCL,optimizer_capture_sql_plan_baselines,FALSE,automatic capture of SQL plan baselines for repeatable statements
+FPARM,Oracle,ORCL,optimizer_use_sql_plan_baselines,TRUE,use of SQL plan baselines for captured sql statements
+FPARM,Oracle,ORCL,parallel_min_time_threshold,AUTO,threshold above which a plan is a candidate for parallelization (in seconds)
+FPARM,Oracle,ORCL,parallel_degree_limit,CPU,limit placed on degree of parallelism
+FPARM,Oracle,ORCL,parallel_force_local,FALSE,force single instance execution
+FPARM,Oracle,ORCL,optimizer_use_invisible_indexes,FALSE,Usage of invisible indexes (TRUE/FALSE)
+FPARM,Oracle,ORCL,dst_upgrade_insert_conv,TRUE,Enables/Disables internal conversions during DST upgrade
+FPARM,Oracle,ORCL,parallel_servers_target,192,instance target in terms of number of parallel servers
+FPARM,Oracle,ORCL,max_string_size,STANDARD,controls maximum size of VARCHAR2, NVARCHAR2, and RAW types in SQL
+FPARM,Oracle,ORCL,optimizer_adaptive_reporting_only,FALSE,use reporting-only mode for adaptive optimizations
+FPARM,Oracle,ORCL,optimizer_adaptive_plans,TRUE,controls all types of adaptive plans
+FPARM,Oracle,ORCL,optimizer_inmemory_aware,TRUE,optimizer in-memory columnar awareness
+FPARM,Oracle,ORCL,cursor_invalidation,IMMEDIATE,default for DDL cursor invalidation semantics
+FPARM,Oracle,ORCL,approx_for_aggregation,FALSE,Replace exact aggregation with approximate aggregation
+FPARM,Oracle,ORCL,approx_for_count_distinct,FALSE,Replace count distinct with approx_count_distinct
+FPARM,Oracle,ORCL,approx_for_percentile,none,Replace percentile_* with approx_percentile
+FPARM,Oracle,ORCL,optimizer_adaptive_statistics,FALSE,controls all types of adaptive statistics
+FPARM,Oracle,ORCL,optimizer_ignore_parallel_hints,FALSE,enables embedded parallel hints to be ignored
+FPARM,Oracle,ORCL,parallel_min_degree,1,controls the minimum DOP computed by Auto DOP
+FPARM,Oracle,ORCL,sec_protocol_error_trace_action,TRACE,TTC protocol error action
+FPARM,Oracle,ORCL,sec_protocol_error_further_action,(DROP,3),TTC protocol error continue action
+FPARM,Oracle,ORCL,sec_max_failed_login_attempts,3,maximum number of failed login attempts on a connection
+FPARM,Oracle,ORCL,sec_return_server_release_banner,FALSE,whether the server retruns the complete version information
+FPARM,Oracle,ORCL,enable_ddl_logging,FALSE,enable ddl logging
+FPARM,Oracle,ORCL,client_result_cache_size,0,client result cache max size in bytes
+FPARM,Oracle,ORCL,client_result_cache_lag,3000,client result cache maximum lag in milliseconds
+FPARM,Oracle,ORCL,outbound_dblink_protocols,ALL,Outbound DBLINK Protocols allowed
+FPARM,Oracle,ORCL,allow_global_dblinks,FALSE,LDAP lookup for DBLINKS
+FPARM,Oracle,ORCL,aq_tm_processes,1,number of AQ Time Managers to start
+FPARM,Oracle,ORCL,hs_autoregister,TRUE,enable automatic server DD updates in HS agent self-registration
+FPARM,Oracle,ORCL,xml_db_events,enable,are XML DB events enabled
+FPARM,Oracle,ORCL,dg_broker_start,FALSE,start Data Guard broker (DMON process)
+FPARM,Oracle,ORCL,dg_broker_config_file1,/u01/app/oracle/product/18c/dbs/dr1orcl.dat,data guard broker configuration file #1
+FPARM,Oracle,ORCL,dg_broker_config_file2,/u01/app/oracle/product/18c/dbs/dr2orcl.dat,data guard broker configuration file #2
+FPARM,Oracle,ORCL,olap_page_pool_size,0,size of the olap page pool in bytes
+FPARM,Oracle,ORCL,asm_diskstring,,disk set locations for discovery
+FPARM,Oracle,ORCL,asm_preferred_read_failure_groups,,preferred read failure groups
+FPARM,Oracle,ORCL,control_management_pack_access,DIAGNOSTIC+TUNING,declares which manageability packs are enabled
+FPARM,Oracle,ORCL,awr_pdb_autoflush_enabled,FALSE,Enable/Disable AWR automatic PDB flushing
+FPARM,Oracle,ORCL,awr_pdb_max_parallel_slaves,10,maximum concurrent AWR PDB MMON slaves per instance
+FPARM,Oracle,ORCL,awr_snapshot_time_offset,0,Setting for AWR Snapshot Time Offset
+FPARM,Oracle,ORCL,sqltune_category,DEFAULT,Category qualifier for applying hintsets
+FPARM,Oracle,ORCL,autotask_max_active_pdbs,2,Setting for Autotask Maximum Maintenance PDBs
+FPARM,Oracle,ORCL,enable_automatic_maintenance_pdb,TRUE,Enable/Disable Automated Maintenance for Non-Root PDB
+FPARM,Oracle,ORCL,spatial_vector_acceleration,FALSE,enable spatial vector acceleration
+FPARM,Oracle,ORCL,diagnostic_dest,/u01/app/oracle,diagnostic base directory
+FPARM,Oracle,ORCL,tracefile_identifier,,trace file custom identifier
+FPARM,Oracle,ORCL,max_dump_file_size,unlimited,Maximum size (in bytes) of dump file
+FPARM,Oracle,ORCL,trace_enabled,TRUE,enable in memory tracing
+FPARM,Oracle,ORCL,cell_offloadgroup_name,,Set the offload group name
+FPARM,Oracle,ORCL,enable_pluggable_database,FALSE,Enable Pluggable Database
+FPARM,Oracle,ORCL,pdb_os_credential,,pluggable database OS credential to bind
+FPARM,Oracle,ORCL,pdb_file_name_convert,,PDB file name convert patterns and strings for create cdb/pdb
+FPARM,Oracle,ORCL,noncdb_compatible,FALSE,Non-CDB Compatible
+FPARM,Oracle,ORCL,common_user_prefix,C##,Enforce restriction on a prefix of a Common User/Role/Profile name
+FPARM,Oracle,ORCL,target_pdbs,0,Parameter is a hint to adjust certain attributes of the CDB
+FPARM,Oracle,ORCL,max_pdbs,254,max number of pdbs allowed in CDB or Application ROOT
+FPARM,Oracle,ORCL,cdb_cluster,FALSE,if TRUE startup in CDB Cluster mode
+FPARM,Oracle,ORCL,cdb_cluster_name,,CDB Cluster name
+FPARM,Oracle,ORCL,standby_pdb_source_file_directory,,standby source file directory location
+FPARM,Oracle,ORCL,standby_pdb_source_file_dblink,,database link to standby source files
+FPARM,Oracle,ORCL,remote_recovery_file_dest,,default remote database recovery file location for refresh/relocate
+FPARM,Oracle,ORCL,disable_pdb_feature,0,Disable features
+FPARM,Oracle,ORCL,containers_parallel_degree,65535,Parallel degree for a CONTAINERS() query
+FPARM,Oracle,ORCL,default_sharing,metadata,Default sharing clause
+FPARM,Oracle,ORCL,pdb_lockdown,,pluggable database lockdown profile
+FPARM,Oracle,ORCL,pdb_template,,PDB template
+FPARM,Oracle,ORCL,shrd_dupl_table_refresh_rate,60,duplicated table refresh rate (in seconds)
+FPARM,Oracle,ORCL,multishard_query_data_consistency,strong,consistency setting for multishard queries
+FPARM,Oracle,ORCL,multishard_query_partial_results,not allowed,enable partial results for multishard queries
+
+433 rows selected.
+
+
+FREDU,ORACLE,ORCL,/u01/oradata/ORCL/redo03.log,200,3
+FREDU,ORACLE,ORCL,/u01/oradata/ORCL/redo02.log,200,2
+FREDU,ORACLE,ORCL,/u01/oradata/ORCL/redo01.log,200,1
+
+
+FTEMP,ORCL,32,ONLINE,/u01/oradata/ORCL/temp01.dbf
+
+
+FARCH,ORACLE,ORCL,20211223,2592,569
+FARCH,ORACLE,ORCL,20211224,2043,889
+FARCH,ORACLE,ORCL,20211225,468,3
+FARCH,ORACLE,ORCL,20211226,13238,98
+FARCH,ORACLE,ORCL,20211227,7151,2117
+FARCH,ORACLE,ORCL,20211228,20023,4561
+FARCH,ORACLE,ORCL,20211229,10470,2091
+FARCH,ORACLE,ORCL,20211230,13162,4559
+FARCH,ORACLE,ORCL,20211231,16950,4729
+FARCH,ORACLE,ORCL,20220101,33837,4730
+FARCH,ORACLE,ORCL,20220102,26137,4133
+FARCH,ORACLE,ORCL,20220103,5932,1189
+FARCH,ORACLE,ORCL,20220104,18020,2853
+FARCH,ORACLE,ORCL,20220105,25379,4828
+FARCH,ORACLE,ORCL,20220106,16822,4775
+FARCH,ORACLE,ORCL,20220107,15832,4635
+FARCH,ORACLE,ORCL,20220108,24715,3255
+FARCH,ORACLE,ORCL,20220109,27626,3660
+FARCH,ORACLE,ORCL,20220110,12738,3011
+FARCH,ORACLE,ORCL,20220111,23281,4774
+FARCH,ORACLE,ORCL,20220112,16779,2018
+FARCH,ORACLE,ORCL,20220113,11653,2136
+FARCH,ORACLE,ORCL,20220114,14745,4252
+FARCH,ORACLE,ORCL,20220115,20740,2681
+FARCH,ORACLE,ORCL,20220116,11155,1427
+FARCH,ORACLE,ORCL,20220117,10471,3549
+FARCH,ORACLE,ORCL,20220118,12539,352
+FARCH,ORACLE,ORCL,20220119,15697,1916
+FARCH,ORACLE,ORCL,20220120,6079,2115
+FARCH,ORACLE,ORCL,20220121,317,2
+FARCH,ORACLE,ORCL,20220122,645,4
+FARCH,ORACLE,ORCL,20220123,627,4
+FARCH,ORACLE,ORCL,20220124,321,2
+FARCH,ORACLE,ORCL,20220125,487,3
+
+34 rows selected.
+
+
+FNPSPARM,ORCL,processes,148,167,      1920,      1920,8.7
+FNPSPARM,ORCL,sessions,163,184,      2904,      2904,6.3
+FNPSPARM,ORCL,enqueue_locks,25,121,     34060,     34060,.4
+FNPSPARM,ORCL,max_rollback_segments,11,11,      3194,     65535,.3
+FNPSPARM,ORCL,parallel_max_servers,48,48,       480,     32767,10
+
+
+###***ocrcheck***###
+
+###***crsctl query css votedisk***###
+
+###############################################################################
+CONFIG FILE : /hsrm/AgentV8_py36/config/fleta.cfg 
+###############################################################################
+
+[ftp]
+server = 121.170.193.196
+user = fletaFTP
+timeout = 5
+pass = MfmNWa/dtZt6SN+m0rbfpg==
+port = 21
+
+[socket]
+port = 54002
+server = 121.170.193.196
+
+[systeminfo]
+set_device = FS
+diskcheck = WMI
+
+[srm]
+srm_port = 80
+srm_ip = 121.170.193.196
+
+[COMMON]
+agent_ip = 121.170.193.203
+version_check = T
+transfer = SOCKET
+home_dir = /hsrm/AgentV8_py36
+agent_port = 54001
+agent_execute = 10
+
+[save_dir]
+EMC.CLONE = /data/EMC.CLONE/
+dbinfo.MAN = /data/dbms_spool//
+dbinfo.SCH = /data/dbms_spool/
+diskinfo.MAN = /data/serverinfo/
+diskinfo.SCH = /data/serverinfo/
+
+[log]
+log_remove = 30
+logPath=/hsrm/AgentV8_py36/logs
+
+###############################################################################
+USER : root 
+###############################################################################
+
+###############################################################################
+SCHEDULE : 30:1:*:*:* 
+###############################################################################
+
+###############################################################################
+###############################################################################
+###########  END : 2022-01-26 09:10:23
+###############################################################################
+###############################################################################
