@@ -23,7 +23,11 @@ class DbInfoUdbPosix():
         a_user_list = []
         for s_ps_value in s_tmp.splitlines():
             try:
-                a_user_list.append(s_ps_value.split()[0])
+                if isinstance(s_ps_value.split()[0],bytes):
+                    user = s_ps_value.split()[0].encode('utf-8')
+                else:
+                    user = s_ps_value.split()[0]
+                a_user_list.append(user)
             except:
                 pass
         return a_user_list
@@ -82,6 +86,7 @@ class DbInfoUdbPosix():
         s_ret = self.o_common.get_execute(s_level_check_file)
 
         a_ver_check = re.findall('.*DB2 v([0-9]{1,2}).*', s_ret)
+
         if len(a_ver_check) > 0:
             i_db2_level = int(a_ver_check[0])
             if int(i_db2_level) > 9:
@@ -99,19 +104,15 @@ class DbInfoUdbPosix():
         else:
             os.chmod(self.o_common.s_tmp_path, 0o707)
 
-        o_query_contents_enc = self.o_common.file_read('/sql/udb_v%s.sql' % (s_version))
-
-        self.o_common.file_write('/tmp/udb_v%s.sql' % (s_version), self.s_aes_cipher.decrypt(o_query_contents_enc))
-        s_query_file = self.o_common.s_tmp_path + '/udb_v%s.sql' % (s_version)
+        o_query_contents_enc = self.o_common.file_read('./sql/udb_v%s.sql' % (s_version))
+        s_query_file = self.o_common.s_tmp_path + 'udb_v%s.sql' % (s_version)
+        self.o_common.file_write(s_query_file, self.s_aes_cipher.decrypt(o_query_contents_enc))
         s_db2sh_file_name = 'db2_sh_%s_%s.sh' % (s_instance, s_db)
-
         s_db2sh_path = os.path.join(self.shell_dir, s_db2sh_file_name)
-
         #s_db_tmp_file = self.o_common.s_tmp_path + 'db2_%s.out' % (s_inst)
         s_db_tmp_file = '/tmp/db2_%s_%s.out' % (s_instance, s_db)
-
         if os.path.isfile(s_query_file):
-            s_query = self.o_common.file_read('/tmp/udb_v%s.sql' % (s_version))
+            s_query = self.o_common.file_read(s_query_file)
         else:
             s_ret = 'Not Supported This Version : %s' % (s_version)
             print(s_ret)
@@ -149,6 +150,7 @@ class DbInfoUdbPosix():
         self.o_common.screenshot(self.o_common.get_cmd_title_msg('Tablespace info'), a_save_type=a_save_type)
         for s_user in self.get_user_list():
             a_instance_list = self.make_init_sh(s_user)
+
             for a_inst_dic in a_instance_list:
                 s_instance = a_inst_dic['instance']
                 s_db = a_inst_dic['dbname']

@@ -30,7 +30,10 @@ class DbInfoOracleAsmPosix():
             for line in a_ret_instance:
                 a_tmp = line.split()
                 a_instance_list['ORAUSER'] = a_tmp[0]
-                s_sid = a_tmp[-1].split('_')[-1]
+                if isinstance(a_tmp[-1],bytes):
+                    s_sid = a_tmp[-1].encode('utf-8').split('_')[-1]
+                else:
+                    s_sid = a_tmp[-1].split('_')[-1]
                 a_instance_list['SID'] = s_sid
 
         return a_instance_list
@@ -56,14 +59,17 @@ class DbInfoOracleAsmPosix():
 
         # JDBC
         if self.b_jdbc is True:
-            s_asm_info = self.o_jdbc.get_query('/sql/asm.sql')
+            s_asm_info = self.o_jdbc.get_query('./sql/asm.sql')
 
         # JDBC가 아닐때
         else:
-            o_asm_enc = self.o_common.file_read('/sql/asm.sql')
+            s_file = os.path.join('.','sql','asm.sql')
+            o_asm_enc = self.o_common.file_read(s_file)
+            print(o_asm_enc)
+            print(self.s_aes_cipher.decrypt(o_asm_enc))
             self.o_common.file_write('/tmp/asm.sql', self.s_aes_cipher.decrypt(o_asm_enc), s_agent_path=False)
             s_file_name = os.path.join('/tmp', 'asm.sql')
-
+            print(s_ora_user, s_sid, s_file_name)
             b_multi_check, s_cmd = self.o_oracle_auth.oracle_command(s_ora_user, s_sid, s_file_name)
 
             if b_multi_check is False :

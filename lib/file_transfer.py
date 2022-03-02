@@ -105,7 +105,8 @@ class FileTransfer():
                             with open(s_file_name) as f:
                                 s_data_contents = f.read()
                             if not isinstance(s_data_contents,bytes):
-                                s_data_contents = bytes(s_data_contents,'utf-8')
+                                # s_data_contents = bytes(s_data_contents,'utf-8')
+                                s_data_contents = s_data_contents.encode(errors='ignore ')
                             # print('-'*50)
                             # print(os.path.isfile(s_file_name))
                             # print(s_data_contents)
@@ -119,7 +120,7 @@ class FileTransfer():
                     except socket.error as e:
                         b_bit = False
                         self.log_control.logdata('AGENT', 'ERROR', '40001')
-                        print (str(e))
+                        print(str(e))
 
         return b_bit
 

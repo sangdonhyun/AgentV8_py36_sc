@@ -358,8 +358,9 @@ class Common():
         if self.b_screen == 'F':
             pass
         else:
+            print('type :',type(s_contents))
             if isinstance(s_contents,bytes):
-                s_contents = s_contents.decode('utf-8')
+                s_contents = s_contents.decode('utf-8',"ignore")
                 print('screenshot :',s_contents)
 
         self.data_file_wrtie(s_contents, a_save_type, b_start)

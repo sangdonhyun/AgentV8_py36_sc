@@ -279,13 +279,8 @@ if __name__ == '__main__':
         dir = args[1]
     except:
         dir = 'SCH'
-    try:
-        cnt = os.popen('ps -ef | grep fleta_diskinfo | grep -v grep |wc -l').read()
-        o_fleta = Fleta()
-        print('diskinfo CNT :',cnt,int(cnt) == 0)
-        if int(cnt) == 0:
-            VersionCheck().main()
-            o_fleta.main(dir)
-    except Exception as e:
-        print(str(e))
-        pass
+
+    VersionCheck().main()
+    o_fleta = Fleta()
+    o_fleta.main(dir)
+

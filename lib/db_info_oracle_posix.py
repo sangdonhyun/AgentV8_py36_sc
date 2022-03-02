@@ -106,6 +106,7 @@ class DbInfoOraclePosix():
     def tablespace_info(self, a_val):
 
         s_file = './sql/ora.sql'
+        s_file = os.path.join('.','sql','ora.sql')
         s_sid = a_val['sid']
         s_switch_user = a_val['user']
         if self.b_jdbc is True:
